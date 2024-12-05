@@ -4,31 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
+    <style>
+        /* Sidebar styling */
+        @media (min-width: 992px) {
+            #sidebar {
+                display: block;
+                width: 14%;
+                top: 0;
+                left: 0;
+                height: 100%;
+                z-index: 1030;
+                background-color: #f8f9fa;
+                padding: 1rem;
+            }
+        }
+    
+        /* Carousel and form alignment */
+        #imageCarousel {
+            max-width: 600px;
+            margin: auto;
+        }
+    
+        #feedback-form {
+            max-width: 600px;
+            margin: auto;
+        }
+    
+        .carousel-item img {
+            height: 300px;
+            object-fit: cover;
+        }
+    
+        .mt-custom {
+            margin-top: -10rem !important;
+        }
+    
+        .mt-5 {
+            margin-top: 3rem !important;
+        }
+    
+        /* Responsive margin adjustment */
+        @media (max-width: 768px) {
+            .mt-5 {
+                margin-top: 11rem !important;
+            }
+        }
+    </style>
+    
 </head>
-<body>
-    <h2>Feedback Form</h2>
-    <form id="feedback-form">
-        <input type="text" id="name" name="name" placeholder="Name" required><br>
-        <input type="text" id="mobile" name="mobile" placeholder="Mobile" required><br>
-        <input type="text" id="college" name="college" placeholder="College/Company" required><br>
-        
-        <label>Trainer Engagement:</label><br>
-        <input type="radio" name="engagement" value="Bad" required> Bad
-        <input type="radio" name="engagement" value="Good"> Good
-        <input type="radio" name="engagement" value="Best"> Best<br>
+<body class="bg-light">
+    <!-- Header -->
+    <header class="navbar navbar-expand-lg navbar-light bg-primary text-white">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <span class="navbar-brand ms-2">Feedback Form</span>
+        </div>
+    </header>
 
-        <label>Course Material:</label><br>
-        <input type="radio" name="material" value="Bad" required> Bad
-        <input type="radio" name="material" value="Good"> Good
-        <input type="radio" name="material" value="Best"> Best<br>
+    <!-- Sidebar for Desktop -->
+    <nav id="sidebar" class="d-none d-lg-block">
+        <h5 class="text-center">Menu</h5>
+        <ul class="list-unstyled">
+            <li><a href="#" class="nav-link">Home</a></li>
+            <li><a href="#" class="nav-link">About</a></li>
+        </ul>
+    </nav>
 
-        <input type="text" id="learn-next" name="learnNext" placeholder="What do you want to learn next?"><br>
+    <!-- Sidebar for Mobile -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </div>
 
-        <button type="submit">Submit</button>
-    </form>
+    <!-- Main Content -->
+    <div id="main-content" class="container mt-5">
+        <!-- Carousel -->
+        <div id="imageCarousel" class="carousel slide mt-custom" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://www.w3schools.com/bootstrap5/chicago.jpg" class="d-block w-100" alt="Chicago">
+                    <div class="carousel-caption">
+                        <p>Welcome to Chicago</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.w3schools.com/bootstrap5/la.jpg" class="d-block w-100" alt="Los Angeles">
+                    <div class="carousel-caption">
+                        <p>Explore Los Angeles</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.w3schools.com/bootstrap5/ny.jpg" class="d-block w-100" alt="New York">
+                    <div class="carousel-caption">
+                        <p>Discover New York</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 
+        <!-- Form -->
+        <div class="container my-4">
+            <form id="feedback-form" class="p-4 bg-white shadow rounded">
+                <!-- Full Name -->
+                <div class="form-floating mb-3">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" required>
+                    <label for="name">Full Name</label>
+                </div>
+                <!-- Mobile Number -->
+                <div class="form-floating mb-3">
+                    <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Mobile Number" required>
+                    <label for="mobile">Mobile Number</label>
+                </div>
+                <!-- College / Company -->
+                <div class="form-floating mb-3">
+                    <input type="text" id="college" name="college" class="form-control" placeholder="College/Company" required>
+                    <label for="college">College / Company</label>
+                </div>
+                <!-- Questions -->
+                <div class="mb-3">
+                    <label class="form-label">1. How was Trainer Engagement?</label>
+                    <div class="d-flex justify-content-between">
+                        <div><input type="radio" id="q1-a" name="engagement" value="Best" class="form-check-input" required><label for="q1-a" class="ms-1">Best</label></div>
+                        <div><input type="radio" id="q1-b" name="engagement" value="Good" class="form-check-input"><label for="q1-b" class="ms-1">Good</label></div>
+                        <div><input type="radio" id="q1-c" name="engagement" value="Average" class="form-check-input"><label for="q1-c" class="ms-1">Average</label></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">2. How was the Course Material ?</label>
+                    <div class="d-flex justify-content-between">
+                        <div><input type="radio" id="q1-a" name="material" value="Best" class="form-check-input" required><label for="q1-a" class="ms-1">Best</label></div>
+                        <div><input type="radio" id="q1-b" name="material" value="Good" class="form-check-input"><label for="q1-b" class="ms-1">Good</label></div>
+                        <div><input type="radio" id="q1-c" name="material" value="Average" class="form-check-input"><label for="q1-c" class="ms-1">Average</label></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">3. Have you got your doubt clearance?</label>
+                    <div class="d-flex justify-content-between">
+                        <div><input type="radio" id="q1-a" name="doubt" value="Yes" class="form-check-input" required><label for="q1-a" class="ms-1">Yes</label></div>
+                        <div><input type="radio" id="q1-b" name="doubt" value="Still waiting" class="form-check-input"><label for="q1-b" class="ms-1">Still waiting</label></div>
+                        <div><input type="radio" id="q1-c" name="doubt" value="I'm Clear" class="form-check-input"><label for="q1-c" class="ms-1">I'm Clear</label></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="q5" class="form-label">Question 5:</label>
+                    <select id="q5" name="q5" class="form-select" required>
+                        <option value="">Select an option</option>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                        <option value="Option 4">Option 4</option>
+                    </select>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" id="learn-next" name="learnNext" class="form-control" placeholder="Course Name" required>
+                    <label for="learn-next">What do you want to learn next?</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center bg-primary text-white py-2">
+        &copy; Instill Learning (Instillsoft Private Limited)
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Handle form submission
         document.getElementById("feedback-form").addEventListener("submit", function(e) {
@@ -76,6 +240,5 @@
             });
     }
     </script>
-
 </body>
 </html>
