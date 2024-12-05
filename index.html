@@ -1,1 +1,81 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <h2>Feedback Form</h2>
+    <form id="feedback-form">
+        <input type="text" id="name" name="name" placeholder="Name" required><br>
+        <input type="text" id="mobile" name="mobile" placeholder="Mobile" required><br>
+        <input type="text" id="college" name="college" placeholder="College/Company" required><br>
+        
+        <label>Trainer Engagement:</label><br>
+        <input type="radio" name="engagement" value="Bad" required> Bad
+        <input type="radio" name="engagement" value="Good"> Good
+        <input type="radio" name="engagement" value="Best"> Best<br>
+
+        <label>Course Material:</label><br>
+        <input type="radio" name="material" value="Bad" required> Bad
+        <input type="radio" name="material" value="Good"> Good
+        <input type="radio" name="material" value="Best"> Best<br>
+
+        <input type="text" id="learn-next" name="learnNext" placeholder="What do you want to learn next?"><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Handle form submission
+        document.getElementById("feedback-form").addEventListener("submit", function(e) {
+            e.preventDefault(); // Prevent form from reloading the page
+
+            // Collect form data
+            const name = document.getElementById("name").value;
+            const mobile = document.getElementById("mobile").value;
+            const college = document.getElementById("college").value;
+            const engagement = document.querySelector('input[name="engagement"]:checked').value;
+            const material = document.querySelector('input[name="material"]:checked').value;
+            const learnNext = document.getElementById("learn-next").value;
+
+            // Send data to Google Sheets
+            fetch("https://script.google.com/macros/s/AKfycbxzJNVGX7omfXX5z100rtQIinQ7U26QjjkPEZlksryh3ejtwJrj0RW_1kY3mpqfLw83/exec", {
+                method: "POST",
+                body: new URLSearchParams({
+                    name,
+                    mobile,
+                    college,
+                    engagement,
+                    material,
+                    learnNext
+                })
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                alert("Feedback submitted successfully!");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+
+        // Register the Service Worker
+        if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(registration => {
+                console.log("Service Worker registered with scope:", registration.scope);
+            })
+            .catch(error => {
+                console.error("Service Worker registration failed:", error);
+            });
+    }
+    </script>
+
+</body>
+</html>
