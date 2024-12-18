@@ -3,20 +3,8 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4f4f9;
-    color: #333;
-    font-family: 'Roboto', sans-serif; /* Apply Roboto for the body */
-    line-height: 1.6; /* Improved line spacing for better readability */
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Merriweather', serif; /* Apply Merriweather for headings */
-    font-weight: 700; /* Bold headings */
-}
-
-p {
-    font-size: 1.125rem; /* Adjust paragraph font size for readability */
-    color: #333; /* Dark text for better contrast */
+    display: flex;
+    flex-direction: column; 
 }
 
 .wrapper {
@@ -26,50 +14,39 @@ p {
 header {
     display: flex;
     justify-content: space-between;
+    /* Space out elements */
     align-items: center;
+    /* Vertically align items */
     background-color: #6200ea;
     color: white;
     padding: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
+    /* width: 98%; */
 }
 
-h2 {
-    line-height: 0.6;
-}
-
-.header-text {
-    font-size: 1.2rem;
-}
-
-.header-subtext {
-    font-size: 0.7rem;
-}
-
-.header-button {
+.back-button {
     font-size: 0.9rem;
     cursor: pointer;
     color: #bdb9b9;
-    padding: 8px;
-    border: 1px solid #390187;
-    border-radius: 4px;
+    padding: 4px;
+    
 }
 
-/* Page 1 CSS */
 .container {
     display: flex;
-      flex-wrap: wrap;
-      text-align: left;
-      justify-content: space-between;
-      padding: 6px;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    text-align: left;
 }
 
 .column {
+    flex: 1;
     padding: 0.5rem;
+    
 }
 
-/* .logo column takes up 70% width */
 .logo {
-    flex: 0 0 65%;  /* Takes 70% of the container's width */
     display: flex;
     flex-direction: column;
 }
@@ -88,82 +65,27 @@ h2 {
     color: #6200ea;
     text-decoration: none;
 }
+/*--------------------*/
 
-/* .training column takes up 30% width */
-.training {
-    flex: 1 0 27%;  /* Takes 30% of the container's width */
-    padding-left: 1rem;  /* Optional: spacing between columns */
-    background-color: #bdb9b9;
+
+button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    /* padding: 1.5rem 2rem; */
+    cursor: pointer;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    /* width:50%; */
+    height: 60px;
+    font-size: 3vh !important;
+    margin-bottom: 8vh;
 }
 
-.training-list {
-    list-style-type: none;
-    padding-left: 0;
+button:hover {
+    background-color: #3700b3;
 }
 
-.training-list li {
-    margin: 0.5rem 0;
-}
-
-
-/*--- courses card -----*/
-    .courses {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 15px;
-    }
-
-    .card-content h3 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
-    }
-
-    .card-content p {
-      font-size: 1em;
-      color: #666;
-      margin-bottom: 15px;
-    }
-
-    .card-content .btn {
-      display: inline-block;
-      padding: 10px 15px;
-      background-color: #007bff;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    .card-content .btn:hover {
-      background-color: #0056b3;
-    }
-  
-
-
-/*feedback page*/
 .training {
     background-color: #f1f1f1;
     border-radius: 8px;
@@ -172,6 +94,15 @@ h2 {
 
 .training h2 {
     color: #6200ea;
+}
+
+.card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .inputTxt {
@@ -208,26 +139,35 @@ ol {
 
 .container1 {
     display: flex;
+    /* Use Flexbox layout */
     flex-wrap: wrap;
+    /* Allow items to wrap to new rows */
     gap: 1rem;
+    /* Add space between checkboxes */
 }
 
 .checkbox-item {
     flex: 1 1 calc(25% - 1rem);
+    /* Default: 4 items per row (25% width each) */
     max-width: calc(25% - 1rem);
+    /* Prevent items from exceeding 25% width */
     display: flex;
+    /* Flexbox for alignment */
     align-items: center;
+    /* Center the checkbox and label vertically */
     gap: 0.5rem;
+    /* Add space between checkbox and label */
 }
 
+/* Responsive for smaller screens */
 @media screen and (max-width: 768px) {
     .checkbox-item {
         flex: 1 1 calc(50% - 1rem);
+        /* 2 items per row for smaller screens */
         max-width: calc(50% - 1rem);
     }
 }
 
-/*tabk you page*/
 .thank-you {
     display: flex;
     flex-direction: column;
@@ -237,7 +177,6 @@ ol {
     font-size: 1.5rem;
 }
 
-/* footer */
 footer {
     background-color: #6200ea;
     color: white;
@@ -295,6 +234,7 @@ footer {
     }
 }
 
+
 /* Scrollable Container */
 .scrollable-container {
     background-color: #fff;
@@ -333,4 +273,8 @@ ul li::before {
     border: 1px solid #ddd; /* Optional border for better visibility */
     border-radius: 4px; /* Rounded corners */
     text-align: center; /* Center align text */
+}
+
+h2 {
+    
 }

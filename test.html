@@ -1,12 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PXxc2pQfN4Z6XX" async> </script> </form>
+    <!-- First Page -->
+    <div id="page1" style="display: block;">
+        <header style="text-align: left;">Feedback Form - PWA </header>
+        <div class="container">
+            <div class="column logo">
+                <img src="icon-192x192.png" alt="Logo">
+                <div><strong>Instructor Name:</strong> Gaurab Kumar</div>
+                <div><strong>WhatsApp:</strong> <a href="https://wa.me/919110245113" target="_blank">https://wa.me/919110245113</a></div>
+                <div><strong>Email:</strong> <a href="mailto:webmaster@example.com">Jon Doe</a></div>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button onclick="showFeedbackPage()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+                        Provide Feedback
+                    </button>
+                </div>
+            </div>
 
-</body>
-</html>
+
+            <div class="column training scrollable-container">
+                <h2>Get expert training with Real-World Projects:</h2>
+                <ul class="training-list">
+                    <li>Full Stack Development Training</li>
+                    <li>Mobile App Development Training</li>
+                    <li>Web App Development Training</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Machine Learning</li>
+                    <li>Data Science</li>
+                    <li>Cybersecurity</li>
+                    <li>Cloud Computing</li>
+                    <li>Blockchain</li>
+                </ul>
+                <h2>Welcome to Developers Learning Group!</h2>
+                <p>
+                    Join us and take the next step in your learning journey:
+                </p>
+                <ul>
+                    <li><strong>Live Training:</strong>Learn through live sessions over ZOOM from experts.</li>
+                    <li><strong>Online Courses:</strong> Dive into a variety of courses for Sofware Development</li>
+                    <li><strong>Career Counseling:</strong> Get personalized guidance to discover your career goals</li>
+                    <li><strong>Internships:</strong> Gain hands-on experience with our internship opportunities</li>
+                    <li><strong>Corporate Training:</strong> Enhance your team’s skills with our customized corporate training</li>
+                    <li><strong>Certification Programs:</strong> Stay ahead with our industry-structured certification training</li>                    
+                    <li><strong>Flexible schedules</strong>Enroll now and take the first step to success anytime</li>
+                </ul>
+                <p>
+                    <strong>Get in Touch!</strong>
+                </p>
+            </div>
+        </div>
+        
+        
+        <footer>
+            <div class="footer-container">
+                <!-- First Column -->
+                <div class="footer-column">
+                    <p>© 2024 Your Company Name. All rights reserved.</p>
+                </div>
+        
+                <!-- Second Column -->
+                <div class="footer-column">
+                    <ul class="footer-menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Second Page -->
+    <div id="page2" style="display: none;">
+        <header>Feedback Form - PWA <span class="back-button" onclick="goBack()">Back</span></header>
+        <div class="card">
+            <form id="feedbackForm" onsubmit="submitFeedback(event)">
+                <label class="label-bold" for="name">Name:</label>
+                <input class="inputTxt" type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label class="label-bold" for="mobile">Mobile:</label>
+                <input class="inputTxt" type="number" id="mobile" name="mobile" placeholder="Enter your mobile number"
+                    required>
+
+                <label class="label-bold" for="email">Email:</label>
+                <input class="inputTxt" type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <section>
+                    <ol>
+                        <li>
+                            <div class="options">
+                                <label class="label-bold">How would you rate the overall quality of the
+                                    workshop?</label>
+                                <div class="radio-group">
+                                    <input type="radio" name="rating" value="Excellent"> Excellent
+                                    <input type="radio" name="rating" value="Good"> Good
+                                    <input type="radio" name="rating" value="Poor"> Poor
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="options">
+                                <label class="label-bold">How helpful was the content presented during the
+                                    workshop?</label>
+                                <div class="radio-group">
+                                    <input type="radio" name="helpful" value="Very helpful"> Very helpful
+                                    <input type="radio" name="helpful" value="Neutral"> Neutral
+                                    <input type="radio" name="helpful" value="Not helpful"> Not helpful
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="options">
+                                <label class="label-bold">How engaging was the instructor during the session?</label>
+                                <div class="radio-group">
+                                    <input type="radio" name="engaging" value="Very engaging"> Very engaging
+                                    <input type="radio" name="engaging" value="Neutral"> Neutral
+                                    <input type="radio" name="engaging" value="Not engaging"> Not engaging
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="options">
+                                <label class="label-bold">What type of training would you be interested in for the
+                                    future?</label>
+                                <div class="container1">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option1" value="JavaScript">
+                                        <label class="label-small" for="option1">JavaScript</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option2" value="Python">
+                                        <label class="label-small" for="option2">Python</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option3" value="Android/iOS">
+                                        <label class="label-small" for="option3">Android/iOS</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option4" value="MERN">
+                                        <label class="label-small" for="option4">MERN - React.JS</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option5" value="MEAN">
+                                        <label class="label-small" for="option5">MEAN - Angular</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option6" value="GenAI">
+                                        <label class="label-small" for="option6">Generative AI</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option7" value="ReactNative">
+                                        <label class="label-small" for="option7">React Native</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option8" value="Flutter">
+                                        <label class="label-small" for="option8">Flutter</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option7" value="Blockchain">
+                                        <label class="label-small" for="option7">Blockchain</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="option8" value="Other">
+                                        <label class="label-small" for="option8">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+
+
+
+
+                </section>
+
+
+
+                <div style="display: flex; justify-content: center;">
+                    <button onclick="" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+                        Submit Feedback
+                    </button>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Third Page -->
+    <div id="page3" style="display: none;">
+        <div class="thank-you">
+            <h1>Thank You!</h1>
+            <p>Your feedback has been submitted.</p>
+        </div>
+    </div>
