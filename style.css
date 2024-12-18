@@ -6,7 +6,7 @@ html, body {
     background-color: #f4f4f9;
     color: #333;
     font-family: 'Roboto', sans-serif; /* Apply Roboto for the body */
-    line-height: 1.6; /* Improved line spacing for better readability */
+    line-height: 1.4; /* Improved line spacing for better readability */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -108,9 +108,9 @@ h2 {
 
 /*--- courses card -----*/
     .courses {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 10px;
     }
 
     .card {
@@ -133,18 +133,18 @@ h2 {
     }
 
     .card-content {
-      padding: 15px;
+      padding: 6px;
     }
 
-    .card-content h3 {
+    /* .card-content h3 {
       font-size: 1.5em;
-      margin-bottom: 10px;
-    }
+      margin-bottom: 4px;
+    } */
 
     .card-content p {
       font-size: 1em;
       color: #666;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .card-content .btn {
