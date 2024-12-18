@@ -9,6 +9,24 @@ function goBack() {
   document.getElementById("page2").style.display = "none";
 }
 
+getElementById('helloBtn').addEventListener('submit', function(e) {
+  e.preventDefault();
+  console.log('hjkjhj');
+})
+
+
+function openPaymentPage(courseName, imageUrl) {
+// Create a new URL for the payment page
+const paymentUrl = new URL('payment.html');
+
+// Add course details as query parameters
+paymentUrl.searchParams.append('courseName', courseName);
+paymentUrl.searchParams.append('imageUrl', imageUrl);
+
+// Open the payment page in a new tab
+window.open(paymentUrl, '_blank');
+}
+
 // Handle form submission
 document.getElementById("feedbackForm").addEventListener("submit", function(e) {
   e.preventDefault(); // Prevent form submission
@@ -93,6 +111,8 @@ document.getElementById("feedbackForm").addEventListener("submit", function(e) {
     // You can show an alert or highlight the empty fields if needed
   }
 });
+
+
 
 // Register the Service Worker
 if ("serviceWorker" in navigator) {

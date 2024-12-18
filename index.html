@@ -18,12 +18,12 @@
                 <span onclick="goToCourses()" class="header-button">Live Training</span>
                 <span onclick="goToBlog()" class="header-button">Blog</span>
                 <span onclick="showFeedbackPage()" class="header-button">Feedback</span>
-                <span onclick="goBack()" class="header-button">Back</span>
-                <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PXxc2pQfN4Z6XX" async> </script> </form>
+                <span id="gobackbtn" onclick="goBack()" class="header-button">Back</span>
             </div> 
         </header>
         <div id="content"></div>
         <script>
+            //document.getElementById('gobackbtn').style.display = 'none';
             function loadPage(page) {
                 fetch(`${page}.html`)
                     .then(response => response.text())
@@ -34,9 +34,23 @@
             }
     
             function showFeedbackPage() {
+                //document.getElementById('gobackbtn').style.display = 'block';
                 loadPage('feedback'); // Loads feedback.html
             }
+
+            function goBack() {
+                loadPage('page1'); // Loads feedback.html
+            }
     
+
+    function openPaymentPage(courseName, imageUrl) {
+        const paymentUrl = new URL('payment.html', window.location.origin);
+        paymentUrl.searchParams.append('courseName', courseName);
+        paymentUrl.searchParams.append('imageUrl', imageUrl);
+        window.open(paymentUrl, '_blank');
+    }
+
+
             // Load page1.html by default when the app starts
             loadPage('page1');
         </script>

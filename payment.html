@@ -1,0 +1,24 @@
+<div class="payment-container">
+    <h1>Enroll in <span id="course-name"></span></h1>
+    <img id="course-image" src="" alt="Course Image">
+    <p>Proceed with the payment to start your learning journey!</p>
+    <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PXxc2pQfN4Z6XX" async> </script> </form>
+  </div>
+
+  <script>
+    // Retrieve query parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseName = urlParams.get('courseName');
+    const imageUrl = urlParams.get('imageUrl');
+    
+    // Update the page content
+    document.getElementById('course-name').textContent = courseName;
+    document.getElementById('course-image').src = imageUrl;
+
+    // Function to handle payment (placeholder)
+    function makePayment() {
+      alert('Redirecting to payment gateway...');
+      // Implement payment gateway logic here
+    }
+  </script>
+</body>
