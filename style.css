@@ -22,6 +22,15 @@ p {
 .wrapper {
     flex: 1; 
 }
+/*
+display: inline-block; 
+padding: 10px 20px;
+background-color: #007BFF;
+color: white;
+border-radius: 5px;
+margin: 5px; 
+text-align: center;
+*/
 
 header {
     display: flex;
@@ -141,6 +150,10 @@ h2 {
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s ease-in-out;
+      padding: 3%;
+      margin-left: 20%;
+      margin-right: 20%;
+      margin-top: 1%;
     }
 
     .card:hover {
@@ -210,7 +223,7 @@ h2 {
 
 .label-bold {
     font-weight: 600;
-    font-size: 1.7vh;
+    font-size: 2vh;
 }
 
 .label-small {
@@ -350,3 +363,5 @@ ul li::before {
     border-radius: 4px; /* Rounded corners */
     text-align: center; /* Center align text */
 }
+
+

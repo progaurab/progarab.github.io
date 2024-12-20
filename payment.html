@@ -1,10 +1,60 @@
-<div class="payment-container">
-    <h1>Enroll in <span id="course-name"></span></h1>
-    <img id="course-image" src="" alt="Course Image">
-    <p>Proceed with the payment to start your learning journey!</p>
-    <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PXxc2pQfN4Z6XX" async> </script> </form>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
+    .container {
+      display: flex;
+      flex-direction: column; /* Stack the card and the button vertically */
+      align-items: center; /* Center the content horizontally */
+    }
+
+    .payment-container {
+      text-align: center; /* Centers text inside the container */
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 80%; /* Adjust the width as needed */
+      max-width: 600px; /* Maximum width for larger screens */
+      background-color: #f9f9f9;
+      margin-bottom: 20px; /* Space between the card and the button */
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="payment-container">
+      <h1>Enroll in <span id="course-name"></span></h1>
+      <img id="course-image" src="" alt="Course Image">
+      <p>Proceed with the payment to start your learning journey!</p>
+      <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PXxc2pQfN4Z6XX" async> </script> </form>
+    </div>
+    <button onclick="goBack()">Go Back</button> 
+  </div>
   <script>
     // Retrieve query parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -20,5 +70,10 @@
       alert('Redirecting to payment gateway...');
       // Implement payment gateway logic here
     }
+
+    function goBack() {
+      window.location.href = window.location.origin + '/index.html';
+    }
   </script>
 </body>
+</html>
