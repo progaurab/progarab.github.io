@@ -22,15 +22,6 @@ p {
 .wrapper {
     flex: 1; 
 }
-/*
-display: inline-block; 
-padding: 10px 20px;
-background-color: #007BFF;
-color: white;
-border-radius: 5px;
-margin: 5px; 
-text-align: center;
-*/
 
 header {
     display: flex;
@@ -43,7 +34,7 @@ header {
 }
 
 h2 {
-    line-height: 0.6;
+    line-height: 1;
 }
 
 .header-text {

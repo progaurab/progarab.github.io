@@ -1,0 +1,217 @@
+<style>
+    /* Container for the entire row */
+    .row {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping of columns when screen size is small */
+        justify-content: space-between;
+    }
+
+    /* First column styles (Slider) */
+    .column1 {
+        flex: 0 0 60%;  /* Take up 60% of the row */
+        height: 280px;
+        overflow: hidden;
+    }
+
+    /* Second column styles */
+    .column2 {
+        flex: 0 0 40%;  /* Take up 40% of the row */
+        height: 280px;
+        margin-top: -4px;
+        overflow-y: scroll;
+    }
+
+    /* Clear the float inside the row (if using floats) */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Slider animation */
+    @keyframes slidy {
+        0% { left: 0; }
+        10% { left: -100%; }
+        20% { left: -200%; }
+        30% { left: -300%; }
+        40% { left: -400%; }
+        50% { left: -400%; }
+        60% { left: -300%; }
+        70% { left: -200%; }
+        85% { left: -100%; }
+        100% { left: 0%; }
+    }
+
+    /* Slider container */
+    div#slider { 
+        overflow: hidden;
+        width: 100%;  /* Ensure the slider container takes full width */
+    }
+
+    div#slider figure { 
+        position: relative;
+        width: 500%;  /* Accommodates 5 images */
+        margin: 0;
+        left: 0;
+        text-align: left;
+        font-size: 0;
+        animation: 28s slidy infinite;
+    }
+
+    /* Image inside slider */
+    div#slider figure img {
+        width: 20%;  /* Make each image take up 20% of the container's width */
+        float: left;
+        height: 280px;
+        object-fit: cover;
+    }
+
+    /* Styling for the right column */
+    .iconDetails {
+        float: left;
+        width: 12%;
+        height: auto;
+        margin-top: 8px;
+    }
+
+    .container2 {
+        border: 1px solid #410096;
+        border-radius: 8px;
+        height: 80px;
+        background-color: #F3F6F8;
+        margin: 6px;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+    }
+
+    .text_1 {
+        padding: 1.3vw;
+        margin-left: 4vw;
+        text-align: left;
+    }
+
+    .text_2 {
+        font-size: 1.3vw;
+        font-weight: bold;
+        color: #181818;
+    }
+
+    .text_3 {
+        font-size: 0.9vw;
+        color: #626263;
+    }
+
+    /* Media Queries for responsiveness */
+    @media only screen and (max-width: 350px) {
+        /* Mobile view adjustments */
+        .row {
+            flex-direction: column;  /* Stack columns vertically */
+        }
+
+        .column1, .column2 {
+            flex: 0 0 100%;  /* Make both columns take full width */
+            margin-top: 10px; /* Add space between the stacked columns */
+        }
+
+        .text_3 {
+            display: none; /* Hide subtext on small screens */
+        }
+
+        .iconDetails {
+            width: 32%;  /* Make icons bigger on smaller screens */
+        }
+
+        .text_2 {
+            font-size: 1.8vw;  /* Increase font size on small screens */
+        }
+
+        .container2 {
+            display: flex;
+            flex-direction: column; /* Stack the content vertically */
+            align-items: flex-start;
+        }
+    }
+
+    /* Desktop view styling (default) */
+    @media only screen and (min-width: 601px) {
+        /* Keep columns side by side */
+        .row {
+            flex-direction: row;
+        }
+
+        .column1, .column2 {
+            margin-top: 0; /* Remove margin when side by side */
+        }
+
+        .container2 {
+            display: flex;
+            flex-direction: row; /* Keep the container content in a row */
+        }
+
+        .text_2 {
+            font-size: 1.3vw;  /* Normal font size for larger screens */
+        }
+    }
+</style>
+
+<!-- HTML Structure -->
+<div class="row" style="margin-top: -20px;">
+    <div class="column1">
+        <div id="slider">
+            <figure>
+                <!-- Slider Images -->
+                <img src="https://s3.us-east-1.amazonaws.com/contents.newzenler.com/1433/library/slide-image-il-164435773cc7f9_lg.png" alt="Slide 1">
+                <img src="https://s3.us-east-1.amazonaws.com/contents.newzenler.com/1433/library/react-training63ba6bc4d3b38_sm.png" alt="Slide 2">
+                <img src="https://s3.us-east-1.amazonaws.com/contents.newzenler.com/1433/library/full-stack63ba6cbc68ce4_lg.png" alt="Slide 3">
+                <img src="https://s3.us-east-1.amazonaws.com/contents.newzenler.com/1433/library/kids-264437944d420d_lg.png" alt="Slide 4">
+                <img src="https://s3.us-east-1.amazonaws.com/contents.newzenler.com/1433/library/blockchain-training63ba6ba5664a4_lg.png" alt="Slide 5">
+            </figure>
+        </div>
+    </div>
+    <div class="column2">
+        <!-- Container 1 -->
+        <div class="container2"> 
+            <a href="https://www.instilllearning.com/courses/ethereum-certified-blockchain-professional-training">
+                <img src="https://www.instilllearning.com/1433/files/63f97b793ac97_1677294457_other.png" class="iconDetails" alt="Training 1">
+                <div class="text_1">
+                    <span class="text_2">Looking for Live or Corporate Training?</span><br>
+                    <span class="text_3">Contact for other training &amp; Interview preparation</span>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Container 2 -->
+        <div class="container2"> 
+            <a href="https://www.instilllearning.com/courses/ethereum-certified-blockchain-professional-training">
+                <img src="https://www.instilllearning.com/1433/files/63f977b74726a_1677293495_icon-blockchain.png" class="iconDetails" alt="Training 2">
+                <div class="text_1">
+                    <span class="text_2">Blockchain Development Training</span><br>
+                    <span class="text_3">Get started with blockchain development</span>
+                </div> 
+            </a>
+        </div>
+    
+        <!-- Container 3 -->
+        <div class="container2"> 
+            <a href="https://www.instilllearning.com/courses/ethereum-certified-blockchain-professional-training">
+                <img src="https://www.instilllearning.com/1433/files/63f978f24e845_1677293810_icon-fullstack-development.png" class="iconDetails" alt="Training 3">
+                <div class="text_1">
+                    <span class="text_2">Full Stack Development Training</span><br>
+                    <span class="text_3">Get Started with Mobile, Web, Backend Development</span>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Container 4 -->
+        <div class="container2">
+            <a href="https://www.instilllearning.com/courses/ethereum-certified-blockchain-professional-training">
+                <img src="https://www.instilllearning.com/1433/files/63f97b793ac97_1677294457_other.png" class="iconDetails" alt="Training 4">
+                <div class="text_1">
+                    <span class="text_2">Looking for Live or Corporate Training?</span><br>
+                    <span class="text_3">Contact for other training &amp; Interview preparation</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
