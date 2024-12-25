@@ -1,4 +1,5 @@
-const CACHE_NAME = "feedback-form-cache-v1";
+// service-worker.js
+const CACHE_NAME = "feedback-form-cache-v18dec";
 const urlsToCache = [
     "/",
     "/index.html",
