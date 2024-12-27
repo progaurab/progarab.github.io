@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <!-- Include Prism.js CSS for Syntax Highlighting -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Top Ad (Ad 3) */
+        .ad-top {
+            background-color: #371c5e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            height: 120px;
+            line-height: 120px; /* Vertically center the text */
+        }
+
+        /* Offer Section Styling */
+        .offer-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fafafa;
+            margin-top: 10px;
+        }
+
+        .offer-text {
+            flex: 1;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .offer-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .offer-button {
+            padding: 10px 20px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .offer-button:hover {
+            background-color: #4500b3;
+        }
+
+        /* Container for the entire page (with flexbox) */
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Ad styling */
+        .ad {
+            background-color: #ccc;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            text-align: center;
+            height: 250px; /* Set height for desktop view */
+        }
+
+        /* Blog Post Styling */
+        .blog-post-container {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0;
+        }
+
+        .blog-post h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .blog-post p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .blog-post h2 {
+            color: #444;
+            margin-top: 20px;
+        }
+
+        /* Ads in mobile view (up and down) */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .ad {
+                height: 200px; /* Reduce height in mobile */
+                margin-bottom: 20px; /* Margin between ads */
+            }
+
+            .blog-post-container {
+                margin: 20px 0;
+            }
+        }
+
+        /* Ads in desktop view (left and right) */
+        @media (min-width: 769px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .ad {
+                flex: 0 0 250px; /* Set the width of the ads */
+                height: 100vh; /* Full viewport height for ads */
+            }
+
+            .blog-post-container {
+                flex: 1;
+                margin: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Ad (Ad 3) -->
+<div class="ad-top">
+    <p>Special Offer: Get 20% Off! Use code: BLOG20</p>
+</div>
+
+<!-- Offer Section -->
+<div class="offer-section">
+    <div class="offer-text">Exclusive Offer: Save on your next purchase with code BLOG20!</div>
+    <div class="offer-buttons">
+        <button class="offer-button" onclick="goBack()">Go Back</button>
+        <button class="offer-button" onclick="logCouponCode()">Log Coupon Code</button>
+    </div>
+</div>
+
+<!-- Container for the entire page (with flexbox) -->
+<div class="container">
+    <!-- Ad on the left -->
+    <div class="ad">
+        <p>Ad 1</p>
+        <p>Here could be an ad!</p>
+    </div>
+
+    <!-- Blog Post Content -->
+    <div class="blog-post-container" id="blog-post-content">
+        <!-- Content will be dynamically inserted here -->
+    </div>
+
+    <!-- Ad on the right -->
+    <div class="ad">
+        <p>Ad 2</p>
+        <p>Here could be another ad!</p>
+    </div>
+</div>
+
+<!-- Include marked.js for Markdown parsing -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Include Prism.js JS for Syntax Highlighting -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+
+<script>
+    // Function to get the post ID from the URL
+    function getPostId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id'); // Get the 'id' from the URL (e.g., ?id=1)
+    }
+
+    // Function to fetch and display the post content
+    async function loadPostContent(postId) {
+        const postFile = `posts/post_${postId}.md`; // Example: posts/post_1.md
+
+        console.log("Fetching file:", postFile); // Log the file path for debugging
+
+        try {
+            // Fetch the Markdown file
+            const response = await fetch(postFile);
+
+            // Check if the file was found
+            if (!response.ok) {
+                throw new Error(`Post file not found: ${postFile}`);
+            }
+
+            // Get the Markdown content as text
+            const markdownText = await response.text();
+            console.log("Markdown content fetched:", markdownText); // Log fetched content for debugging
+
+            // Convert Markdown to HTML using marked.js
+            const htmlContent = marked.parse(markdownText);
+
+            // Insert the HTML content into the blog-post container
+            const contentContainer = document.getElementById('blog-post-content');
+            contentContainer.innerHTML = htmlContent;
+
+            // After inserting the HTML content, run Prism to highlight code
+            Prism.highlightAll(); // This will apply syntax highlighting to all code blocks
+
+        } catch (error) {
+            // In case of an error, show a message
+            console.error("Error loading the post content:", error);
+            document.getElementById('blog-post-content').innerHTML = "<p>Sorry, the post could not be loaded.</p>";
+        }
+    }
+
+    // When the page loads, get the post ID from the URL and load the post content
+    window.onload = function() {
+        const postId = getPostId(); // Get the post ID from the URL
+        if (postId) {
+            loadPostContent(postId); // Load the content of the post
+        } else {
+            document.getElementById('blog-post-content').innerHTML = "<p>No post found.</p>";
+        }
+    };
+
+    // Function to navigate to the previous page
+    function goBack() {
+        window.history.back(); // Navigate to the previous page
+    }
+
+    // Function to log the coupon code to the console
+    function logCouponCode() {
+        console.log("Coupon code: BLOG20"); // Log the coupon code
+    }
+</script>
+
+</body>
+</html>

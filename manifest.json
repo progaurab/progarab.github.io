@@ -1,7 +1,7 @@
 {
-    "name": "Feedback Form App",
-    "short_name": "Feedback",
-    "description": "A simple and efficient feedback form application.",
+    "name": "Grip Learning - Empower Your Skills",
+    "short_name": "Grip Learning",
+    "description": "Live training and blogs to enhance your software development skills.",
     "start_url": "/index.html",
     "scope": "/",
     "display": "standalone",

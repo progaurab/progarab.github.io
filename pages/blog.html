@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blog Page</title>
+    <style>
+        /* Basic Reset and Layout */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        #page5 {
+            padding: 20px;
+        }
+
+        /* Blog container for displaying cards */
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Blog Card Styles */
+        .blog-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px; /* Limit card width */
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 0 15px;
+        }
+
+        .blog-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .blog-excerpt {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .tag {
+            font-size: 0.9rem;
+            background-color: #6200ea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tag:hover {
+            background-color: #4500b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .blog-card {
+                max-width: 100%; /* Full width on mobile */
+            }
+        }
+
+        /* Link styling */
+        .blog-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="page5">
+    <h1>Blog Section</h1>
+    <div class="blog-container">
+
+        <!-- Blog Post 1 -->
+        <div class="blog-card" data-tags="web,html,css,javascript">
+            <a href="pages/blog-post.html?id=1" class="blog-card-link">
+                <img src="https://via.placeholder.com/300x180" alt="Blog 1 Image" class="blog-image">
+                <div class="blog-content">
+                    <h2 class="blog-title">Learn Web Development</h2>
+                    <p class="blog-excerpt">Web development is a vast field. Here’s an introduction to the fundamentals...</p>
+                </div>
+            </a>
+            <div class="blog-tags">
+                <span class="tag" data-tag="web">web</span>
+                <span class="tag" data-tag="html">html</span>
+                <span class="tag" data-tag="css">css</span>
+                <span class="tag" data-tag="javascript">javascript</span>
+            </div>
+        </div>
+
+
+        <!-- Blog Post 2 -->
+        <div class="blog-card" data-tags="web,html">
+            <a href="pages/blog-post.html?id=2" class="blog-card-link">
+                <img src="https://via.placeholder.com/300x180" alt="Blog 2 Image" class="blog-image">
+                <div class="blog-content">
+                    <h2 class="blog-title">Learn HTML 5</h2>
+                    <p class="blog-excerpt">HTML 5 is the scalton of your web page. Here’s an introduction to the fundamentals...</p>
+                </div>
+            </a>
+            <div class="blog-tags">
+                <span class="tag" data-tag="web">web</span>
+                <span class="tag" data-tag="html">html</span>
+            </div>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="blog-card" data-tags="web,html,css">
+            <a href="pages/blog-post.html?id=3" class="blog-card-link">
+                <img src="https://via.placeholder.com/300x180" alt="Blog 3 Image" class="blog-image">
+                <div class="blog-content">
+                    <h2 class="blog-title">Learn CSS 3</h2>
+                    <p class="blog-excerpt">CSS 3 is the stylling sheet of your web page. Here’s an introduction to the fundamentals...</p>
+                </div>
+            </a>
+            <div class="blog-tags">
+                <span class="tag" data-tag="web">web</span>
+                <span class="tag" data-tag="html">html</span>
+                <span class="tag" data-tag="css">css</span>
+            </div>
+        </div>
+
+        <!-- Blog Post 4 -->
+        <div class="blog-card" data-tags="html,css,javascript">
+            <a href="pages/blog-post.html?id=4" class="blog-card-link">
+                <img src="https://via.placeholder.com/300x180" alt="Blog 4 Image" class="blog-image">
+                <div class="blog-content">
+                    <h2 class="blog-title">Learn JavaScript</h2>
+                    <p class="blog-excerpt">JavaScript is important for your web page. Here’s an introduction to the fundamentals...</p>
+                </div>
+            </a>
+            <div class="blog-tags">
+                <span class="tag" data-tag="html">html</span>
+                <span class="tag" data-tag="css">css</span>
+                <span class="tag" data-tag="javascript">javascript</span>
+            </div>
+        </div>
+
+        <!-- Blog Post 5 -->
+        <div class="blog-card" data-tags="web,pwa,javascript">
+            <a href="pages/blog-post.html?id=5" class="blog-card-link">
+                <img src="https://via.placeholder.com/300x180" alt="Blog 5 Image" class="blog-image">
+                <div class="blog-content">
+                    <h2 class="blog-title">Learn PWA (Progressive Web Aapp)</h2>
+                    <p class="blog-excerpt">Progressive Web Aapp is the web page. Here’s an introduction to the fundamentals...</p>
+                </div>
+            </a>
+            <div class="blog-tags">
+                <span class="tag" data-tag="html">html</span>
+                <span class="tag" data-tag="css">css</span>
+                <span class="tag" data-tag="javascript">javascript</span>
+                <span class="tag" data-tag="pwa">pwa</span>
+            </div>
+        </div> 
+
+        <!-- Blog Post 6 -->
+        <div class="blog-card" data-tags="cordova,android,ios">
+            <a href="pages/blog-post.html?id=6" class="blog-card-link">
+                <img src="https://via.placeholder.com/300x180" alt="Blog 6 Image" class="blog-image">
+                <div class="blog-content">
+                    <h2 class="blog-title">Learn Apache Cordova to build Android & iOS App</h2>
+                    <p class="blog-excerpt">Apache Cordova is the web page. Here’s an introduction to the fundamentals...</p>
+                </div>
+            </a>
+            <div class="blog-tags">
+                <span class="tag" data-tag="html">android</span>
+                <span class="tag" data-tag="css">apache cordova</span>
+                <span class="tag" data-tag="javascript">ios</span>
+            </div>
+        </div> 
+        
+        
+    </div>
+</div>
+
+<script>
+    // JavaScript to handle tag filtering and preventing blog navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all tags
+        const tags = document.querySelectorAll('.tag');
+
+        // Add event listener to each tag to filter blog posts
+        tags.forEach(tag => {
+            tag.addEventListener('click', function(event) {
+                event.stopPropagation();  // Prevent click from propagating to parent <a> tag
+
+                const tagName = this.getAttribute('data-tag').toLowerCase();
+                
+                // Show all blog posts if the tag is clicked
+                const blogCards = document.querySelectorAll('.blog-card');
+                blogCards.forEach(card => {
+                    const cardTags = card.getAttribute('data-tags').split(',');
+                    
+                    // Check if the card has the clicked tag
+                    if (cardTags.includes(tagName)) {
+                        card.style.display = 'block'; // Show card
+                    } else {
+                        card.style.display = 'none'; // Hide card
+                    }
+                });
+            });
+        });
+
+        // Prevent card navigation if tag is clicked
+        const blogCards = document.querySelectorAll('.blog-card-link');
+        blogCards.forEach(card => {
+            card.addEventListener('click', function(event) {
+                // Only navigate when the click is on the card, not the tag
+                const isTagClicked = event.target.classList.contains('tag');
+                if (isTagClicked) {
+                    event.preventDefault(); // Prevent navigation if tag is clicked
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

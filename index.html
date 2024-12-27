@@ -1,39 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <head>
+        <!-- Basic Meta Tags -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Grip Learning - Empowering students with live training in software development and insightful blogs." />
+        <meta name="keywords" content="Grip Learning, software courses, live training, programming blogs, PWA" />
+        <meta name="author" content="Grip Learning Team" />
+        
+        <!-- Open Graph / Social Media Tags -->
+        <meta property="og:title" content="Grip Learning - Learn Software Development Live" />
+        <meta property="og:description" content="Join Grip Learning to access live software development training and blogs to boost your skills." />
+        <meta property="og:image" content="images/social-share.png" />
+        <meta property="og:url" content="https://griplearning.in" />
+        <meta property="og:type" content="website" />
+        
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Grip Learning - Learn Software Development Live" />
+        <meta name="twitter:description" content="Live training and blogs to enhance your software development skills." />
+        <meta name="twitter:image" content="images/social-share.png" />
+    
+        <!-- Title -->
+        <title>Grip Learning - Learn Software Development Live</title>
+    
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+        
+        <!-- Web App Manifest -->
+        <link rel="manifest" href="manifest.json" />
+    
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Merriweather:wght@400;700&display=swap&font-display=swap" />
 
-    <title>Document</title>
-</head>
-<body>
-    <section class="page_404">
-        <div class="container">
-            <div class="row">	
-            <div class="col-sm-12 ">
-            <div class="col-sm-10 col-sm-offset-1  text-center">
-            <div class="four_zero_four_bg">
-                <h1 class="text-center ">404</h1>
-            
-            
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css" />
+      </head>
+
+      <body>
+        <div class="wrapper">
+          <header>
+            <span class="header-text">Grip Learning - Empower Your Skills</span>
+            <div>
+              <span onclick="goToCourses()" class="header-button">Live Training</span>
+              <span onclick="goToBlog()" class="header-button">Blog</span>
+              <span onclick="showFeedbackPage()" class="header-button">Feedback</span>
             </div>
-            
-            <div class="contant_box_404">
-            <h3 class="h2">
-            Look like you're lost
-            </h3>
-            
-            <p>the page you are looking for not avaible!</p>
-            
-            <a href="" class="link_404">Go to Home</a>
+          </header>
+          <div id="content"></div>
         </div>
-            </div>
-            </div>
-            </div>
+    
+        <!-- Scripts -->
+        <script src="index.js"></script>
+      </body>
+    
+  <!-- <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head> -->
+
+  <!-- <body>
+    <div class="wrapper">
+      <header>
+        <span class="header-text">Feedback Form - PWA </span>
+        <div>
+          <span onclick="goToCourses()" class="header-button">Live Training</span >
+          <span onclick="goToBlog()" class="header-button">Blog</span>
+          <span onclick="showFeedbackPage()" class="header-button">Feedback</span>
         </div>
-    </section>
-</body>
+      </header>
+      <div id="content"></div>
+      <script src="index.js"></script>
+    </div>
+  </body> -->
 </html>
