@@ -1,52 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Live training with real-world projects, interview preparation, and job assistance. Explore our HTML, CSS, and JavaScript courses.">
-  <meta name="keywords" content="HTML training, CSS training, JavaScript training, live coding, job assistance">
-  <meta name="author" content="Grip Learning">
-  <title>Courses - Grip Learning</title>
-</head>
-<body>
-  <main class="container">
-    <section class="column logo">
-      <h1>Get Live Training</h1>
-      <p class="header-subtext">with Real-World Projects, Interview Preparation & Job Assistance</p>
+<div class="container">
+    <div class="column logo">
+      <h2>Get Live Training <br> 
+        <span class="header-subtext">with Real-World Projects, Interview Preparation & Job Assistance</span>
+      </h2>
       <div class="courses">
         <!-- Course 1 -->
-        <article class="card">
-          <img src="https://via.placeholder.com/300x180" alt="HTML for Beginners Course">
+        <div class="card">
+          <img src="images/courses/html.png" alt="HTML for Beginners Course">
           <div class="card-content">
             <h3>HTML for Beginners</h3>
             <p>Learn the basics of HTML and build your first web page step by step.</p>
-            <button class="btn" onclick="openPaymentPage('HTML for Beginners', 'https://via.placeholder.com/300x180')">Enroll Now</button>
+            <button class="btn" onclick="openPaymentPage('HTML for Beginners', '/images/courses/html.png')">Enroll Now</button>
+            <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_PXxc2pQfN4Z6XX" async> </script> </form>
           </div>
-        </article>
+        </div>
         <!-- Course 2 -->
-        <article class="card">
-          <img src="https://via.placeholder.com/300x180" alt="CSS Masterclass Course">
+        <div class="card">
+          <img src="images/courses/css.png" alt="CSS Masterclass Course">
           <div class="card-content">
             <h3>CSS Masterclass</h3>
             <p>Master modern CSS and create stunning responsive websites.</p>
-            <button class="btn" onclick="openPaymentPage('CSS Masterclass', 'https://via.placeholder.com/300x180')">Enroll Now</button>
+            <button class="btn" onclick="openPaymentPage('CSS Masterclass', '/images/courses/css.png')">Enroll Now</button>
           </div>
-        </article>
+        </div>
         <!-- Course 3 -->
-        <article class="card">
-          <img src="https://via.placeholder.com/300x180" alt="JavaScript for Beginners Course">
+        <div class="card">
+          <img src="images/courses/js.png" alt="JavaScript for Beginners Course">
           <div class="card-content">
             <h3>JavaScript for Beginners</h3>
             <p>Learn the basics of JavaScript and build dynamic web applications.</p>
-            <button class="btn" onclick="openPaymentPage('JavaScript for Beginners', 'https://via.placeholder.com/300x180')">Enroll Now</button>
+            <button class="btn" onclick="openPaymentPage('JavaScript for Beginners', '/images/courses/js.png')">Enroll Now</button>
           </div>
-        </article>
+        </div>
+        <!-- Course 4 -->
+        <div class="card">
+            <img src="images/courses/genai.png" alt="Generative AI for Beginners Course">
+            <div class="card-content">
+            <h3>Generative AI for Beginners and Experienced</h3>
+            <p>Learn the generative ai and build dynamic web applications.</p>
+            <button class="btn" onclick="openPaymentPage('Generative AI for Beginners', '/images/courses/genai.png')">Enroll Now</button>
+            </div>
+        </div>
+
       </div>
-    </section>
-    <aside class="column training">
-      <h2>Additional Information</h2>
-      <p>Find more resources and training opportunities tailored to your goals.</p>
-    </aside>
-  </main>
-</body>
-</html>
+    </div>
+    <div class="column training">
+      <h2>Additional Resources</h2>
+      <p>Explore more learning resources and grow your skills!</p>
+    </div>
+  </div>
+  
+  <style>
+    /*--- courses card -----*/
+    /* Container styling */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: left;
+        justify-content: space-between;
+        padding: 6px;
+    }
+  
+    .logo {
+        flex: 1 0 65%;  /* Takes 70% of the container's width */
+        display: flex;
+        flex-direction: column;
+    }
+  
+    .header-subtext {
+      font-size: 0.7rem;
+      color: #666;
+    }
+  
+    /* Course Cards */
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+  
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+  
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  
+    .card-content {
+      padding: 15px;
+    }
+  
+    .card-content h3 {
+        font-size: 1.3rem;
+        margin: -8px -4px -6px;
+    }
+  
+    .card-content p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+  
+    .card-content .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #6200ea; /* Theme color */
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    .card-content .btn:hover {
+      background-color: #4e00b3;
+    }
+  
+    .card-content .btn:focus {
+      outline: 2px solid #6200ea;
+      outline-offset: 2px;
+    }
+
+    /* @media (max-width: 600px) {
+        .card {
+          padding: 2rem;
+        }
+    } */
+
+    @media (prefers-reduced-motion: reduce) {
+        .card:hover {
+            transform: none;
+        }
+    }
+  
+    /* Additional styling */
+    .training {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .training h2 {
+        color: #6200ea;
+    }
+    /* .training column takes up 30% width */
+    .training {
+        flex: 1 0 27%;  /* Takes 30% of the container's width */
+        padding-left: 1rem;  /* Optional: spacing between columns */
+        background-color: #f1f1f1;
+        border-radius: 8px;
+        padding: 1rem;
+    }
+
+    .training-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .training-list li {
+        margin: 0.5rem 0;
+    } 
+  </style>
+  

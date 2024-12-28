@@ -51,9 +51,9 @@ h2 {
     margin-bottom: 8px;
 }
 
-/* .header-subtext {
+.header-subtext {
     font-size: 0.7rem;
-} */
+}
 
 .header-button {
     font-size: 0.9rem;
@@ -99,6 +99,13 @@ h2 {
 }
 
 /* Page 1 CSS */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    justify-content: space-between;
+    padding: 6px;
+}
 
 .column {
     padding: 0.5rem;
@@ -298,7 +305,11 @@ footer {
 
 
 /* .logo column takes up 70% width */
-
+.logo {
+    flex: 1 0 65%;  /* Takes 70% of the container's width */
+    display: flex;
+    flex-direction: column;
+}
 
 .logo img {
     width: 200px;
@@ -315,10 +326,107 @@ footer {
     text-decoration: none;
 }
 
+/* .training column takes up 30% width */
+.training {
+    flex: 1 0 27%;  /* Takes 30% of the container's width */
+    padding-left: 1rem;  /* Optional: spacing between columns */
+    background-color: #bdb9b9;
+}
 
+.training-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.training-list li {
+    margin: 0.5rem 0;
+}
+
+
+/*--- courses card -----*/
+    .courses {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 10px;
+    }
+
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+      margin-left: 20%;
+      margin-right: 20%;
+      margin-top: 1%;
+    }
+
+    @media (max-width: 600px) {
+        .card {
+          padding: 2rem;
+        }
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .card:hover {
+            transform: none;
+        }
+    }
+
+    .card img {
+        width: 100%; /* Ensure image spans the full width of the card */
+        height: auto; /* Maintain aspect ratio */
+      }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-content p {
+      font-size: 1em;
+      color: #666;
+      margin-bottom: 18px;
+    }
+
+    .card-content .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: var(--primary-color); /* Align with the theme */
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        text-align: center;
+        border: none; /* Remove border for cleaner look */
+        transition: background-color 0.3s ease;
+      }
+      
+      .card-content .btn:hover {
+        background-color: #390187; /* Slightly darker shade for hover */
+      }
+
+      .card-content .btn:focus {
+        outline: 2px solid var(--primary-color); /* Accessibility focus */
+        outline-offset: 2px;
+      }
+  
 
 
 /*feedback page*/
+.training {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.training h2 {
+    color: #6200ea;
+}
+
 .inputTxt {
     width: 100%;
     padding: 0.5rem;
