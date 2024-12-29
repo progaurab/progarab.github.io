@@ -1,11 +1,61 @@
 /* index.js */
 function loadPage(page) {
+  const seoData = {
+    "pages/blog.html": {
+      title: "Blog - Grip Learning",
+      description: "Read our latest blogs on web development, HTML, CSS, JavaScript, and more at Grip Learning.",
+    },
+    "pages/courses.html": {
+      title: "Courses - Grip Learning",
+      description: "Explore our live training courses on web development, real-world projects, and job preparation.",
+    },
+    "pages/contact.html": {
+      title: "Contact Us - Grip Learning",
+      description: "Get in touch with Grip Learning for queries, support, and feedback.",
+    },
+    "pages/resume.html": {
+      title: "Resume Builder - Grip Learning",
+      description: "Create and download your professional resume with Grip Learning's Resume Builder.",
+    },
+    // Add more pages and their SEO metadata as needed
+  };
+
   fetch(`${page}`)
     .then((response) => response.text())
     .then((data) => {
       const contentElement = document.getElementById("content");
       contentElement.innerHTML = data;
       contentElement.focus(); // Focus on the content area for better accessibility
+
+
+
+      // Update the title and meta description dynamically
+      if (seoData[page]) {
+        document.title = seoData[page].title;
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+          metaDescription.setAttribute("content", seoData[page].description);
+        } else {
+          const newMetaDescription = document.createElement("meta");
+          newMetaDescription.setAttribute("name", "description");
+          newMetaDescription.setAttribute("content", seoData[page].description);
+          document.head.appendChild(newMetaDescription);
+        }
+      }
+
+      // Execute scripts inside the loaded page
+      const scriptTags = contentElement.querySelectorAll("script");
+      scriptTags.forEach((script) => {
+        const newScript = document.createElement("script");
+        if (script.src) {
+          newScript.src = script.src; // For external scripts
+        } else {
+          newScript.textContent = script.textContent; // For inline scripts
+        }
+        document.body.appendChild(newScript);
+      });
+
+
     })
     .catch((err) => {
       console.error("Error loading page:", err);
