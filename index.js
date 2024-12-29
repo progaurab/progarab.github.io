@@ -46,6 +46,10 @@ function goToBlog() {
   navigateTo("blog");
 }
 
+function goToResumeBuilder() {
+  navigateTo("resume");
+}
+
 // Register the Service Worker
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
