@@ -23,7 +23,7 @@
         }
 
     #preview-section {
-        width: 21cm;
+        width: 18cm;
         height: 29.7cm;
         overflow-y: auto;
         background-color: #ffffff;
@@ -31,6 +31,10 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         margin: 0 auto;
         border: 2px solid lightgray;
+    }
+
+    #preview-section-block {
+        margin: 1rem 1.2rem 0.4rem 1.1remx;
     }
 
     #preview-name {
@@ -159,23 +163,25 @@
 </div>
     <!-- Preview Section -->
     <div id="preview-section">
-        <h4 id="preview-name" class="text-center"></h4>
-        <div class="row">
-            <div class="col-md-6 text-start">
-                <p id="preview-email"></p>
-                <p id="preview-linkedin"></p>
-                <p id="preview-website"></p>
+        <div id="preview-section-block">
+            <h4 id="preview-name" class="text-center"></h4>
+            <div class="row">
+                <div class="col-md-6 text-start">
+                    <p id="preview-email"></p>
+                    <p id="preview-linkedin"></p>
+                    <p id="preview-website"></p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p id="preview-phone"></p>
+                    <p id="preview-github"></p>
+                    <p id="preview-other-profile"></p>
+                </div>
             </div>
-            <div class="col-md-6 text-end">
-                <p id="preview-phone"></p>
-                <p id="preview-github"></p>
-                <p id="preview-other-profile"></p>
+            
+            <div class="mt-4">
+                <h5 class="experience-header">Experience Summary</h5>
+                <ul id="preview-experience-points"></ul>
             </div>
-        </div>
-        
-        <div class="mt-4">
-            <h5 class="experience-header">Experience Summary</h5>
-            <ul id="preview-experience-points"></ul>
         </div>
     </div>
 
