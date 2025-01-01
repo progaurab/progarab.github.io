@@ -1,0 +1,104 @@
+{
+    "HTML5 Course Outline": [
+        {
+            "topic": "Introduction to HTML5",
+            "details": [
+                "What is HTML5? Overview and benefits",
+                "Differences between HTML4 and HTML5",
+                "Setting up a basic HTML5 document",
+                "HTML5 doctype declaration",
+                "Basic structure of an HTML5 webpage"
+            ]
+        },
+        {
+            "topic": "HTML5 Document Structure",
+            "details": [
+                "Understanding the <html>, <head>, and <body> elements",
+                "Semantic elements: <header>, <footer>, <section>, <article>, <nav>, <aside>",
+                "The <main> tag for content structure",
+                "HTML5 <figure> and <figcaption> for images",
+                "HTML5 <mark> and <progress> elements"
+            ]
+        },
+        {
+            "topic": "Working with Text and Links",
+            "details": [
+                "HTML5 text formatting tags: <strong>, <em>, <u>, <sub>, <sup>",
+                "Working with hyperlinks: <a> tag with advanced attributes",
+                "Creating anchor links (internal and external links)",
+                "Anchor links with named fragments and IDs",
+                "HTML5 <nav> tag for navigation links"
+            ]
+        },
+        {
+            "topic": "HTML5 Forms and Input Types",
+            "details": [
+                "Creating forms using <form>, <input>, <textarea>, <select>, <button>",
+                "New input types in HTML5: email, date, tel, url, search",
+                "Input attributes: placeholder, autofocus, required, pattern",
+                "Form validation techniques in HTML5",
+                "HTML5 form submission and actions"
+            ]
+        },
+        {
+            "topic": "Multimedia in HTML5",
+            "details": [
+                "Working with the <audio> element: embedding audio files",
+                "Understanding the <video> element: embedding video files",
+                "HTML5 video attributes: controls, autoplay, loop, poster",
+                "Fallback content in multimedia elements",
+                "Using the <source> element for multiple formats"
+            ]
+        },
+        {
+            "topic": "HTML5 APIs and Storage",
+            "details": [
+                "Overview of HTML5 APIs: Web Storage, Geolocation, Web Workers",
+                "Using the Web Storage API: localStorage and sessionStorage",
+                "HTML5 Geolocation API: accessing user location",
+                "Web Workers: running scripts in background threads",
+                "HTML5 Offline Web Apps: caching resources with service workers"
+            ]
+        },
+        {
+            "topic": "HTML5 Canvas and SVG",
+            "details": [
+                "Introduction to the <canvas> element",
+                "Drawing shapes and paths using JavaScript on the canvas",
+                "Canvas context: 2D vs WebGL",
+                "Working with SVG (Scalable Vector Graphics)",
+                "Creating interactive graphics using SVG and canvas"
+            ]
+        },
+        {
+            "topic": "HTML5 Accessibility and Best Practices",
+            "details": [
+                "Importance of accessibility in HTML5",
+                "ARIA roles and attributes for accessibility",
+                "Ensuring accessible multimedia content",
+                "Keyboard navigation and focus management",
+                "Responsive design best practices for HTML5 websites"
+            ]
+        },
+        {
+            "topic": "Advanced HTML5 Features",
+            "details": [
+                "Using the <details> and <summary> elements for interactive content",
+                "HTML5 WebSockets for real-time communication",
+                "The <output> element for dynamic results",
+                "HTML5 WebRTC for peer-to-peer communication",
+                "Progressive enhancement and graceful degradation techniques"
+            ]
+        },
+        {
+            "topic": "HTML5 Best Practices and Optimization",
+            "details": [
+                "Optimizing web pages for performance in HTML5",
+                "Lazy loading images and videos for faster page loads",
+                "HTML5 SEO best practices",
+                "Mobile-first design and responsive HTML5 layouts",
+                "Ensuring cross-browser compatibility"
+            ]
+        }
+    ]
+}
