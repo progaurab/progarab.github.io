@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Details - Grip Learning</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    #course-details {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    #course-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 10px auto;
+      border-radius: 5px;
+    }
+
+    #course-video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    #course-outline {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 20px;
+      color: #555;
+    }
+
+    #payment-button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="course-details">
+    <h2 id="course-title">Course Title</h2>
+    <img id="course-image" alt="Course Image" />
+    <video id="course-video" controls style="display: none;"></video>
+    <ul id="course-outline">
+      <!-- Course outline will be dynamically populated -->
+    </ul>
+    <div id="payment-button-container">
+      <!-- Razorpay payment button will be dynamically inserted here -->
+    </div>
+  </div>
+</body>
+</html>
