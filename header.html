@@ -1,0 +1,47 @@
+<header>
+  <span class="header-text">Grip Learning - Empower Your Skills</span>
+  <div class="header-menu">
+    <button onclick="goToCourses()" class="header-button">Live Training</button>
+    <button onclick="goToBlog()" class="header-button">Blog</button>
+    <button onclick="showFeedbackPage()" class="header-button">Feedback</button>
+    <button onclick="goToResumeBuilder()" class="header-button">Resume Builder</button>
+  </div>
+</header>
+
+<style>
+  /* Header Styles */
+  header {
+    display: flex;
+    justify-content: space-between; /* Space between logo/text and menu */
+    align-items: center; /* Align items vertically */
+    padding: 10px 20px;
+    background-color: #f8f9fa; /* Example background color */
+    border-bottom: 1px solid #ddd;
+  }
+
+  .header-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .header-menu {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+  }
+
+  .header-button {
+    background-color: #007bff; /* Primary button color */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .header-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+</style>

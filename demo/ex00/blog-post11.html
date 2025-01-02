@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Blog Post Styling */
+        .blog-post {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-post h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .blog-post p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .blog-post h2 {
+            color: #444;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="blog-post" id="blog-post-content">
+    <!-- Content will be dynamically inserted here -->
+</div>
+
+<!-- Include marked.js for Markdown parsing -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+    // Function to get the post ID from the URL
+    function getPostId() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('id'); // Get the 'id' from the URL (e.g., ?id=1)
+    }
+
+    // Function to fetch and display the post content
+    async function loadPostContent(postId) {
+        const postFile = `posts/post_${postId}.md`; // Example: posts/post_1.md
+
+        console.log("Fetching file:", postFile); // Log the file path for debugging
+
+        try {
+            // Fetch the Markdown file
+            const response = await fetch(postFile);
+
+            // Check if the file was found
+            if (!response.ok) {
+                throw new Error(`Post file not found: ${postFile}`);
+            }
+
+            // Get the Markdown content as text
+            const markdownText = await response.text();
+            console.log("Markdown content fetched:", markdownText); // Log fetched content for debugging
+
+            // Convert Markdown to HTML using marked.js
+            const htmlContent = marked.parse(markdownText);
+
+            // Insert the HTML content into the blog-post container
+            document.getElementById('blog-post-content').innerHTML = htmlContent;
+
+        } catch (error) {
+            // In case of an error, show a message
+            console.error("Error loading the post content:", error);
+            document.getElementById('blog-post-content').innerHTML = "<p>Sorry, the post could not be loaded.</p>";
+        }
+    }
+
+    // When the page loads, get the post ID from the URL and load the post content
+    window.onload = function() {
+        const postId = getPostId(); // Get the post ID from the URL
+        if (postId) {
+            loadPostContent(postId); // Load the content of the post
+        } else {
+            document.getElementById('blog-post-content').innerHTML = "<p>No post found.</p>";
+        }
+    };
+</script>
+
+</body>
+</html>
