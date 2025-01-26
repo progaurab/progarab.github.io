@@ -1,157 +1,129 @@
-/* index.js */
+document.addEventListener('DOMContentLoaded', () => {
+  const content = document.getElementById('content');
 
-// Fetch and display the course outline
-function loadCourseOutline(courseFileName) {
-  const courseOutlineElement = document.getElementById("course-outline");
-
-  fetch(`course-outline/${courseFileName}.json`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Failed to fetch course outline: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const courseKey = Object.keys(data)[0]; // Course title is the first key
-      const outline = data[courseKey];
-
-      if (!outline || !Array.isArray(outline)) {
-        throw new Error("Invalid JSON structure");
-      }
-
-      courseOutlineElement.innerHTML = ""; // Clear previous content
-
-      outline.forEach((section) => {
-        const sectionDiv = document.createElement("div");
-        sectionDiv.className = "course-section";
-
-        const topicTitle = document.createElement("h3");
-        topicTitle.textContent = section.topic;
-        sectionDiv.appendChild(topicTitle);
-
-        const detailsList = document.createElement("ul");
-        section.details.forEach((detail) => {
-          const li = document.createElement("li");
-          li.textContent = detail;
-          detailsList.appendChild(li);
-        });
-
-        sectionDiv.appendChild(detailsList);
-        courseOutlineElement.appendChild(sectionDiv);
+  // Function to load header and footer dynamically
+  function loadHeaderFooter() {
+    fetch('header.html')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Header not found');
+        }
+        return response.text();
+      })
+      .then((html) => {
+        document.getElementById('header').innerHTML = html;
+        addNavigationEventListeners(); // Add event listeners after the header is loaded
+      })
+      .catch((error) => {
+        console.error('Error loading header:', error);
       });
-    })
-    .catch((error) => {
-      console.error("Error loading course outline:", error);
-      courseOutlineElement.innerHTML =
-        "<p>Failed to load course outline. Please try again later.</p>";
-    });
-}
 
-// Add Razorpay payment button
-function initializeRazorpayButton() {
-  const razorpayContainer = document.getElementById("razorpay-button-container");
-
-  razorpayContainer.innerHTML = ""; // Clear any existing button
-
-  const form = document.createElement("form");
-  form.action = "https://checkout.razorpay.com/v1/checkout.js";
-  form.method = "POST";
-
-  const script = document.createElement("script");
-  script.src = "https://checkout.razorpay.com/v1/payment-button.js";
-  script.setAttribute("data-payment_button_id", "your-button-id-here"); // Replace with actual ID
-  script.async = true;
-
-  form.appendChild(script);
-  razorpayContainer.appendChild(form);
-}
-
-// Load the payment page
-function openPaymentPage(courseTitle, courseImage, courseFileName) {
-  loadPage("pages/course-details.html").then(() => {
-    document.getElementById("course-title").textContent = courseTitle;
-    document.getElementById("course-image").src = courseImage;
-
-    // Load course outline dynamically
-    loadCourseOutline(courseFileName);
-
-    // Initialize Razorpay button
-    initializeRazorpayButton();
-  });
-}
-
-// SPA navigation
-async function loadPage(page) {
-  try {
-    const response = await fetch(page);
-    if (!response.ok) throw new Error(`Failed to load page: ${response.status}`);
-    const html = await response.text();
-    document.getElementById("content").innerHTML = html;
-  } catch (error) {
-    console.error("Error loading page:", error);
-    document.getElementById("content").innerHTML =
-      "<p>Failed to load the page. Please try again later.</p>";
+    fetch('footer.html')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Footer not found');
+        }
+        return response.text();
+      })
+      .then((html) => {
+        document.getElementById('footer').innerHTML = html;
+      })
+      .catch((error) => {
+        console.error('Error loading footer:', error);
+      });
   }
-}
 
-// Example SPA navigation
-function navigateTo(page) {
-  loadPage(`pages/${page}.html`);
-}
+  // Function to load the main page content dynamically
+  function loadPage(page) {
+    console.log(`Loading page: ${page}`); // Log which page is being loaded
+    fetch(`pages/${page}.html`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Page ${page} not found`);
+        }
+        return response.text();
+      })
+      .then((html) => {
+        content.innerHTML = html;
+        console.log(`Page ${page} loaded successfully`); // Log page load success
+        handlePageScripts(page);
+      })
+      .catch((error) => {
+        console.error('Error loading page:', error);
+        load404(); // If the page is not found, load the 404 page
+      });
+  }
 
-// Register Service Worker
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("/service-worker.js")
-    .then((registration) => {
-      console.log("Service Worker registered with scope:", registration.scope);
-    })
-    .catch((error) => {
-      console.error("Service Worker registration failed:", error);
-    });
-}
+  function load404() {
+    // Load the 404 page content
+    fetch('404.html')
+      .then((response) => {
+        if (!response.ok) {
+          content.innerHTML = '<h1>404 - Page Not Found</h1><p>Oops! This page doesn\'t exist.</p>';
+        } else {
+          return response.text();
+        }
+      })
+      .then((html) => {
+        if (html) {
+          content.innerHTML = html; // Show the content from the 404 page
+        }
+      })
+      .catch((error) => {
+        console.error('Error loading 404 page:', error);
+        content.innerHTML = '<h1>404 - Page Not Found</h1><p>Oops! This page doesn\'t exist.</p>';
+      });
+  }
 
-function loadHeaderFooter() {
-  // Load header
-  fetch("header.html")
-    .then((response) => response.text())
-    .then((headerHtml) => {
-      const headerElement = document.createElement("div");
-      headerElement.innerHTML = headerHtml;
-      document.body.insertBefore(headerElement, document.body.firstChild);
-    })
-    .catch((error) => console.error("Failed to load header:", error));
+  function handlePageScripts(page) {
+    if (page === 'courses') {
+      initCoursesPage();
+    } else if (page === 'blog') {
+      initBlogPage();
+    } else if (page === 'feedback') {
+      initFeedbackPage();
+    } else if (page === 'resume') {
+      initResumePage();
+    }
+  }
 
-  // Load footer
-  fetch("footer.html")
-    .then((response) => response.text())
-    .then((footerHtml) => {
-      const footerElement = document.createElement("div");
-      footerElement.innerHTML = footerHtml;
-      document.body.appendChild(footerElement);
-    })
-    .catch((error) => console.error("Failed to load footer:", error));
-}
+  function initCoursesPage() {
+    console.log('Courses page loaded');
+  }
 
-// SPA Navigation: Update the course-details loading logic
-function openPaymentPage(courseTitle, courseImage, courseFileName) {
-  loadPage("pages/course-details.html").then(() => {
-    document.getElementById("course-title").textContent = courseTitle;
-    document.getElementById("course-image").src = courseImage;
+  function initBlogPage() {
+    console.log('Blog page loaded');
+  }
 
-    // Load course outline dynamically
-    loadCourseOutline(courseFileName);
+  function initFeedbackPage() {
+    console.log('Feedback page loaded');
+  }
 
-    // Initialize Razorpay button
-    initializeRazorpayButton();
+  function initResumePage() {
+    console.log('Resume page loaded');
+  }
 
-    // Dynamically load header and footer
-    loadHeaderFooter();
-  });
-}
+  // Set the default page as 'courses' if no page is specified in the URL hash
+  function handleNavigation() {
+    const page = location.hash.replace('#', '') || 'courses'; // Default to 'courses'
+    loadPage(page);
+  }
 
-// Call loadHeaderFooter for the initial page
-document.addEventListener("DOMContentLoaded", () => {
+  function addNavigationEventListeners() {
+    const blogButton = document.getElementById('goToBlog');
+    const feedbackButton = document.getElementById('showFeedbackPage');
+    const resumeButton = document.getElementById('goToResumeBuilder');
+    const coursesButton = document.getElementById('goToCourses');
+
+    // Define functions for buttons (with event listeners)
+    if (blogButton) blogButton.addEventListener('click', () => loadPage('blog'));
+    if (feedbackButton) feedbackButton.addEventListener('click', () => loadPage('feedback'));
+    if (resumeButton) resumeButton.addEventListener('click', () => loadPage('resume'));
+    if (coursesButton) coursesButton.addEventListener('click', () => loadPage('courses'));
+  }
+
+  window.addEventListener('hashchange', handleNavigation);
+
   loadHeaderFooter();
-  loadPage("pages/courses.html");
+  handleNavigation(); // Load the default page (courses) on initial load
 });

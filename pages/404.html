@@ -1,0 +1,45 @@
+<!-- 404.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .container {
+      text-align: center;
+      padding: 50px;
+    }
+
+    .error-message {
+      font-size: 3em;
+      font-weight: bold;
+    }
+
+    .error-animation {
+      animation: shake 0.5s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    img {
+      width: 150px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="error-message error-animation">Oops! Page not found</div>
+    <img src="https://media.giphy.com/media/10S6YneXeU0fQA/giphy.gif" alt="Funny 404 GIF">
+    <p>Looks like this page went on vacation! 😅</p>
+  </div>
+</body>
+</html>
